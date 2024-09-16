@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "Guild: ${{ inputs.guild }}"
   summarise-guildpact:
-    display: Summarise Guildpact
+    name: Summarise Guildpact
     environment: ${{ inputs.environment }}
     steps:
       - name: Message based on Guildpact
