@@ -44,6 +44,8 @@ jobs:
           SECRETS: ${{ toJSON(secrets) }}
           PREFIX: CARD_
         run: |
+          echo "VARS type: $(jq 'type' <<< "$VARS")"
+          echo "SECRETS type: $(jq 'type' <<< "$SECRETS")"
           filter_props() {
             jq --arg prefix "$PREFIX" --compact-output '
               with_entries(
