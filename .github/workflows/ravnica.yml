@@ -54,7 +54,7 @@ jobs:
           PROPS=$(filter_props <<< "$VARS")
           SECURE_PROPS=$(filter_props <<< "$SECRETS")
           jq \
-            --null-input\
+            --null-input \
             --arg props "$PROPS" \
             --args secureProps "$SECURE_PROPS" \
             '$props + $secureProps'
