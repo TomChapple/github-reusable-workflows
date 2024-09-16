@@ -33,3 +33,28 @@ jobs:
           else
             echo "Some nobody"
           fi
+  display-cards:
+    name: Display Cards
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Display cards
+        env:
+          VARS: ${{ vars }}
+          SECRETS: ${{ secrets }}
+          PREFIX: CARD_
+        run: |
+          filter_props() {
+            jq --arg prefix "$PREFIX" --compact-output '
+              with_entries(
+                select( .key | startswith($prefix) )
+                | { key: .key[($prefix | length):], value }
+                )'
+          }
+          PROPS=$(filter_props <<< "$VARS")
+          SECURE_PROPS=$(filter_props <<< "$SECRETS")
+          jq \
+            --null-input\
+            --arg props "$PROPS" \
+            --args secureProps "$SECURE_PROPS" \
+            '$props + $secureProps'
