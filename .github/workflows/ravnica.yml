@@ -5,6 +5,8 @@ on:
       guild:
         type: string
         required: true
+      environment:
+        type: string
     secrets:
       guildpact:
         type: string
@@ -17,6 +19,7 @@ jobs:
           echo "Guild: ${{ inputs.guild }}"
   summarise-guildpact:
     display: Summarise Guildpact
+    environment: ${{ inputs.environment }}
     steps:
       - name: Message based on Guildpact
         env:

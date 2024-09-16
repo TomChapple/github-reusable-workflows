@@ -9,7 +9,7 @@ jobs:
       guildpact: Niv-Mizzet
   post-dragons-maze:
     uses: ./.github/workflows/ravnica.yml
-    environment: PostDragonsMaze
     with:
+      environment: PostDragonsMaze
       guild: Dimir
     secrets: inherit
