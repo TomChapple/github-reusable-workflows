@@ -12,12 +12,14 @@ on:
 jobs:
   display-guild:
     name: Display Guild
+    runs-on: ubuntu-latest
     steps:
       - name: Display Guild Input
         run: |
           echo "Guild: ${{ inputs.guild }}"
   summarise-guildpact:
     name: Summarise Guildpact
+    runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
       - name: Message based on Guildpact
