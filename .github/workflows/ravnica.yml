@@ -10,18 +10,22 @@ on:
         type: string
 jobs:
   display-guild:
-    - name: Display Guild Input
-      run: |
-        echo "Guild: ${{ inputs.guild }}"
+    name: Display Guild
+    steps:
+      - name: Display Guild Input
+        run: |
+          echo "Guild: ${{ inputs.guild }}"
   summarise-guildpact:
-    - name: Message based on Guildpact
-      env:
-        GUILDPACT: ${{ secrets.guildpact }}
-      run: |
-        if [[ "$GUILDPACT" = "Jace" ]]; then
-          echo "Blue Mage"
-        elif [[ "$GUILDPACT" = "Niv-Mizzet" ]]; then
-          echo "Vain Dragon"
-        else
-          echo "Some nobody"
-        fi
+    display: Summarise Guildpact
+    steps:
+      - name: Message based on Guildpact
+        env:
+          GUILDPACT: ${{ secrets.guildpact }}
+        run: |
+          if [[ "$GUILDPACT" = "Jace" ]]; then
+            echo "Blue Mage"
+          elif [[ "$GUILDPACT" = "Niv-Mizzet" ]]; then
+            echo "Vain Dragon"
+          else
+            echo "Some nobody"
+          fi
