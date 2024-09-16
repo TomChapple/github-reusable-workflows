@@ -40,8 +40,8 @@ jobs:
     steps:
       - name: Display cards
         env:
-          VARS: ${{ vars }}
-          SECRETS: ${{ secrets }}
+          VARS: ${{ toJSON(vars) }}
+          SECRETS: ${{ toJSON(secrets) }}
           PREFIX: CARD_
         run: |
           filter_props() {
