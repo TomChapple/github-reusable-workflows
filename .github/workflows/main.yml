@@ -1,0 +1,15 @@
+name: Caller Workflow
+on: [workflow_dispatch]
+jobs:
+  general-ravnica:
+    uses: ./.github/workflows/ravnica.yml
+    with:
+      guild: Izzet
+    secrets:
+      guildpact: Niv-Mizzet
+  post-dragons-maze:
+    uses: ./.github/workflows/ravnica.yml
+    environment: PostDragonsMaze
+    with:
+      guild: Dimir
+    secrets: inherit
