@@ -48,10 +48,12 @@ jobs:
           echo "SECRETS type: $(jq 'type' <<< "$SECRETS")"
           filter_props() {
             jq --arg prefix "$PREFIX" --compact-output '
-              with_entries(
-                select( .key | startswith($prefix) )
-                | { key: .key[($prefix | length):], value }
-                )'
+              . // {}
+              | with_entries( select( .key | startswith($prefix) )
+                              | { key: .key[($prefix | length):],
+                                  value
+                                  }
+                              )'
           }
           PROPS=$(filter_props <<< "$VARS")
           SECURE_PROPS=$(filter_props <<< "$SECRETS")
