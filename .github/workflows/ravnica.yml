@@ -9,7 +9,6 @@ on:
         type: string
     secrets:
       guildpact:
-        type: string
 jobs:
   display-guild:
     name: Display Guild
