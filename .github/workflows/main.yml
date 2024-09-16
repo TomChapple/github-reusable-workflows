@@ -12,5 +12,4 @@ jobs:
     with:
       environment: PostDragonsMaze
       guild: Dimir
-    secrets:
-      CARD_favourite: ${{ secrets.CARD_favourite }}
+    secrets: inherit
